@@ -10,7 +10,10 @@ public class StaticInnerClassSingleton {
     }
 
     private StaticInnerClassSingleton() {
-
+        //反射防御
+        if (InnerClass.staticInnerClassSingleton != null) {
+            throw new RuntimeException("单例构造器禁止反射调用");
+        }
     }
 
 }
