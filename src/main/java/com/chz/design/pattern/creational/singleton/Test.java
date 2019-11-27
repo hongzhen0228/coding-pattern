@@ -69,13 +69,22 @@ public class Test {
         System.out.println(o);
         System.out.println(instance == o);*/
 
+        new Thread(() -> {
+            test();
+        }).start();
+
+        new Thread(() -> {
+            test();
+        }).start();
     }
 
 
     private static void test() {
         //LazyDoubleCheckSingleton lazyDoubleCheckSingleton = LazyDoubleCheckSingleton.getInstance();
         //ystem.out.println(Thread.currentThread().getName() + ": " + lazyDoubleCheckSingleton);
-        StaticInnerClassSingleton staticInnerClassSingleton = StaticInnerClassSingleton.getInstance();
-        System.out.println(Thread.currentThread().getName() + ": " + staticInnerClassSingleton);
+        /*StaticInnerClassSingleton staticInnerClassSingleton = StaticInnerClassSingleton.getInstance();
+        System.out.println(Thread.currentThread().getName() + ": " + staticInnerClassSingleton);*/
+        ContainerSingleton.putInstance("object", new Object());
+        Object object = ContainerSingleton.getInstance("object");
     }
 }

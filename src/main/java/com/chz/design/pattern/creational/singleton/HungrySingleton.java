@@ -2,7 +2,7 @@ package com.chz.design.pattern.creational.singleton;
 
 import java.io.Serializable;
 
-public class HungrySingleton implements Serializable {
+public class HungrySingleton implements Serializable, Cloneable {
 
     private final static HungrySingleton hungrySingleton;
 
@@ -29,4 +29,8 @@ public class HungrySingleton implements Serializable {
         return hungrySingleton;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return getInstance();
+    }
 }
